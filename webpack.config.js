@@ -1,49 +1,49 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = (env, argv) => {
   const {
     base,
-    index = `./src/index.ts`,
-    template = `./template/index.html`,
-    title,
+    index = './src/index.ts',
+    template = './template/index.html',
+    title
   } = env
 
-  console.log(base, index, template, title);
+  console.log(base, index, template, title)
 
   return {
-    mode: "development",
+    mode: 'development',
     entry: { index },
     plugins: [
       new HtmlWebpackPlugin({
         title,
-        template,
-      }),
+        template
+      })
     ],
     output: {
       filename: '[name].js',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'dist')
     },
     module: {
       rules: [
         {
           test: /\.css$/i,
-          use: ['style-loader', 'css-loader'],
+          use: ['style-loader', 'css-loader']
         },
         {
           test: /\.s[ac]ss$/i,
-          use: ["style-loader", "css-loader", "sass-loader"],
+          use: ['style-loader', 'css-loader', 'sass-loader']
         },
         {
           test: /\.tsx?$/,
           use: 'ts-loader',
-          exclude: /node_modules/,
-        },
-      ],
+          exclude: /node_modules/
+        }
+      ]
     },
     devServer: {
       static: './dist',
       port: 8085
     }
   }
-};
+}
