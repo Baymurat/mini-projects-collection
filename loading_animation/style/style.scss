@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: #2b2b2b;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  span {
+    font-family: arial;
+    font-size: 24px;
+    display: inline-block;
+    color: rgba(255, 255, 255, .1);
+    transition: all .5s;
+    animation: animate 2s infinite;
+  }
+}
+
+@keyframes animate {
+  0% {
+    color: rgba(255, 255, 255, .1);
+    transform: translateY(0) rotate(0deg);
+    margin-left: 0px;
+  }
+  25% {
+    color: yellow;
+    transform: translateY(-15px) rotate(50deg);
+    margin-left: 10px;
+  }
+  100% {
+    color: rgba(255, 255, 255, .1);
+    transform: translateY(0) rotate(360deg);
+  }
+}

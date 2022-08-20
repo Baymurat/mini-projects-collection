@@ -1,0 +1,12 @@
+{
+  "name": "loading_animation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.ts",
+  "scripts": {
+    "start": "webpack-dev-server --config ../webpack.config.js --env base=loading_animation --env title='Loading Animation'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
