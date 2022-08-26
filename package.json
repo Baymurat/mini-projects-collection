@@ -2,7 +2,6 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
@@ -22,7 +21,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate": "node --loader ts-node/esm ./generator/index.ts $npm_config_project && cd ./$npm_config_project && npm init -y"
+    "generate": "npm run clear && npm run mkdirs && npm run init-project && npm run modify",
+    "clear": "rm -rf $npm_config_project",
+    "mkdirs": "ts-node --esm ./generator/mkdirs.ts $npm_config_project",
+    "init-project": "cd ./$npm_config_project && npm init -y",
+    "modify": "ts-node --esm ./generator/modify.ts $npm_config_project"
   },
   "eslintConfig": {
     "extends": [

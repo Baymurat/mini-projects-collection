@@ -1,7 +1,6 @@
 import fs from 'fs';
 
 const projectName = process.argv[2]
-console.log(projectName);
 
 if(!fs.existsSync(projectName)) {
   fs.mkdirSync(`${projectName}/src`, { recursive: true });
