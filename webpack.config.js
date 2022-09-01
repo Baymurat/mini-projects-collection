@@ -2,7 +2,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = (env, argv) => {
+module.exports = (env) => {
   const {
     base,
     index = "./src/index.ts",
@@ -13,6 +13,7 @@ module.exports = (env, argv) => {
   console.log(base, index, template, title);
 
   return {
+    devtool: "source-map",
     mode: "development",
     entry: { index },
     plugins: [
@@ -24,6 +25,9 @@ module.exports = (env, argv) => {
     output: {
       filename: "[name].js",
       path: path.resolve(__dirname, "dist"),
+    },
+    resolve: {
+      extensions: [".ts", ".js", ".tsx"],
     },
     module: {
       rules: [
