@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppings', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #232c33;
+
+  .navigation {
+    position: relative;
+    height: 500px;
+    width: 70px;
+    background-color: #2b343b;
+    box-shadow: 10px 0 0 #4187f6;
+    overflow: hidden;
+    transition: 0.5s;
+
+    &:hover {
+      width: 300px;
+    }
+
+    ul {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding-left: 5px;
+      padding-top: 40px;
+
+      li {
+        position: relative;
+        list-style: none;
+        width: 100%;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        transition: 0.15s;
+
+        &.active {
+          background-color: #4187f6;          
+
+          a::after,
+          a::before {
+            content: '';
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            right: 0;
+            border-radius: 50%;
+            transition: 0.15s;
+          }
+
+          a::before {
+            top: -30px;
+            box-shadow: 15px 15px 0 #4187f6;
+          }
+
+          a::after {
+            bottom: -30px;
+            box-shadow: 15px -15px 0 #4187f6;
+          }
+        }
+
+        a {
+          position: relative;
+          display: block;
+          width: 100%;
+          display: flex;
+          text-decoration: none;
+          color: #fff;
+
+          .icon {
+            position: relative;
+            display: block;
+            min-width: 60px;
+            height: 60px;
+            line-height: 70px;
+            text-align: center;
+
+            ion-icon {
+              position: relative;
+              font-size: 1.5rem;
+              z-index: 1;
+            }
+          }
+
+          .title {
+            position: relative;  
+            display: block;
+            padding-left: 10px;
+            height: 60px;
+            line-height: 60px;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}
