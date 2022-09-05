@@ -16,7 +16,9 @@
       "linebreak-style": ["error", "unix"],
       "quotes": ["error", "double"],
       "semi": ["error", "always"],
-
+      "react-in-jsx-scope": 0,
+      "react/no-unused-prop-types": 0,
+      "react/function-component-definition": 0,
       // override configuration set by extending "eslint:recommended"
       "no-empty": 2,
       "no-cond-assign": ["error", "always"],
@@ -57,7 +59,7 @@
     "no-alert": 0,
     "no-case-declarations": 0,
     "import/prefer-default-export": 0,
-    // "import/no-extraneous-dependencies": 0,
+    "import/no-extraneous-dependencies": 0,
     "import/no-cycle": 0,
     "import/extensions": 0,
     "import/no-named-as-default-member": 0,

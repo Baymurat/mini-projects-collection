@@ -27,7 +27,7 @@ module.exports = (env) => {
       path: path.resolve(__dirname, "dist"),
     },
     resolve: {
-      extensions: [".ts", ".js", ".tsx"],
+      extensions: [".ts", ".js", ".tsx", ".jsx"],
     },
     module: {
       rules: [

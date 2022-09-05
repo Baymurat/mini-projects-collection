@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ../webpack.config.js --env base=sidebar_menu_2 --env title='SIDEBAR_MENU_2'"
+    "start": "webpack-dev-server --config ../webpack.config.js --env base=sidebar_menu_2 --env index='./src/index.tsx' --env title='SIDEBAR_MENU_2'"
   },
   "keywords": [],
   "author": "",

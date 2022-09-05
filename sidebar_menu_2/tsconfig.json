@@ -1,3 +1,12 @@
 {
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "ES6",
+    "sourceMap": true,
+    "target": "ES6",
+    "jsx": "react",
+    "strict": true,
+    "allowJs": true,
+  },
   "include": ["src/**/*"]
-  }
+}
