@@ -23,9 +23,9 @@
     "eject": "react-scripts eject",
     "generate": "npm run clear && npm run mkdirs && npm run init-project && npm run modify",
     "clear": "rm -rf $npm_config_project",
-    "mkdirs": "ts-node --esm ./generator/mkdirs.ts $npm_config_project",
+    "mkdirs": "ts-node --esm ./generator/mkdirs.ts $npm_config_project $npm_config_react",
     "init-project": "cd ./$npm_config_project && npm init -y",
-    "modify": "ts-node --esm ./generator/modify.ts $npm_config_project"
+    "modify": "ts-node --esm ./generator/modify.ts $npm_config_project $npm_config_react"
   },
   "eslintConfig": {
     "extends": [
