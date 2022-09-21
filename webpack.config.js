@@ -25,9 +25,13 @@ module.exports = (env) => {
     output: {
       filename: "[name].js",
       path: path.resolve(__dirname, "dist"),
+      publicPath: "/",
     },
     resolve: {
       extensions: [".ts", ".js", ".tsx", ".jsx"],
+      alias: {
+        "@static": path.resolve(__dirname, `${base}/static/`),
+      },
     },
     module: {
       rules: [
@@ -44,11 +48,16 @@ module.exports = (env) => {
           use: "ts-loader",
           exclude: /node_modules/,
         },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: "asset/resource",
+        },
       ],
     },
     devServer: {
       static: "./dist",
       port: 8085,
+      historyApiFallback: true,
     },
   };
 };

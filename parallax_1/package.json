@@ -1,0 +1,12 @@
+{
+  "name": "parallax_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ../webpack.config.js --env index='./src/index.tsx' --env base=parallax_1 --env title='PARALLAX_1'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
