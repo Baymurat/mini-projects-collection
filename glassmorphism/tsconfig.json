@@ -10,7 +10,7 @@
     "moduleResolution": "node",
     "paths": {
       "@static": ["./static/"],
-      "@components": ["./src/components"]
+      "@components/*": ["./src/components/*"]
     }
   },
   "include": ["src/**/*"]

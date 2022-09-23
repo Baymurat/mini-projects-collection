@@ -31,6 +31,7 @@ module.exports = (env) => {
       extensions: [".ts", ".js", ".tsx", ".jsx"],
       alias: {
         "@static": path.resolve(__dirname, `${base}/static/`),
+        "@components": path.resolve(__dirname, `${base}/src/components/`),
       },
     },
     module: {
