@@ -1,0 +1,12 @@
+{
+  "name": "sidebar_menu_3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ../webpack.config.js --env index='./src/index.tsx' --env base=sidebar_menu_3 --env title='SIDEBAR_MENU_3'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
