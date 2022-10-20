@@ -1,0 +1,56 @@
+.container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(109, 109, 109);
+  padding: 10px;
+  transform: rotate(45deg);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .tick {
+    display: none;
+    animation: tick-animation 1.5s;
+    background: #24d600;
+    border-radius: 5px 5px 0 5px;
+    height: 8px;
+    transform-origin: 0% 0%;
+    position: relative;
+    width: 60%;
+
+    &::before {
+      position: absolute;
+      content: '';
+      bottom: 5px;
+      right: 0;
+      background: inherit;
+      height: 50px;
+      width: 8px;
+      border-radius: inherit;
+      animation: tick-before-animation 1.5s;
+      transform-origin: 0% 100%;
+    }
+  }
+
+  .isChecked {
+    display: block;
+  }
+}
+
+@keyframes tick-animation {
+  0% { transform: scaleX(0);}
+  20% { transform: scaleX(1);}
+  95% { opacity: 1 ;}
+  100% { opacity: 0 ;}
+}
+
+@keyframes tick-before-animation {
+  0%,
+  20% { transform: scaleY(0);}
+  45% { transform: scaleY(1);}
+}
