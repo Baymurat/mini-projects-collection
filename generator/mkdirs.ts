@@ -16,6 +16,7 @@ if (!fs.existsSync(projectName)) {
 
   if (isReactTemplate === "true") {
     fs.copyFileSync(`${__dirname}/template/react/index.tsx`, `${projectName}/src/index.tsx`);
+    fs.copyFileSync(`${__dirname}/template/react/types.d.ts`, `${projectName}/src/types.d.ts`);
     fs.copyFileSync(`${__dirname}/template/react/index.html`, `${projectName}/template/index.html`);
     fs.copyFileSync(`${__dirname}/template/react/App.tsx`, `${projectName}/src/App.tsx`);
     fs.copyFileSync(`${__dirname}/template/react/tsconfig.json`, `${projectName}/tsconfig.json`);
