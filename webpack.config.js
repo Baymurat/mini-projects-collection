@@ -8,6 +8,7 @@ module.exports = (env) => {
     index = "./src/index.ts",
     template = "./template/index.html",
     title,
+    port = 8085,
   } = env;
 
   console.log(base, index, template, title);
@@ -57,7 +58,7 @@ module.exports = (env) => {
     },
     devServer: {
       static: "./dist",
-      port: 8085,
+      port,
       historyApiFallback: true,
     },
   };
