@@ -1,0 +1,177 @@
+$from-left: from-left;
+$from-right: from-right;
+
+@mixin appear-from($side) {
+  position: absolute;
+  display: block;
+  animation: #{$side} 0.8s ease;
+  z-index: 15;
+}
+
+@mixin move-to($offsetX) {
+  position: absolute;
+  display: block;
+  scale: 0;
+  transform: translateX(#{$offsetX});
+  transition: all 0.7s ease;
+}
+
+@mixin appear-animation($name, $offsetX) {
+  @keyframes #{$name} {
+    0% {
+      scale: 0;
+      transform: translateX(#{$offsetX});
+    }
+    100% {
+      scale: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+@mixin card-config($card-type, $offsetX, $offsetY, $rotation) {
+  &.#{$card-type} {
+    --translateX: #{$offsetX};
+    --translateY: #{$offsetY};
+    --rotationCoefficient: #{$rotation};
+  }
+}
+
+:root {
+  --translateX: 10%;
+  --translateY: 10%;
+  --rotationCoefficient: 1;
+}
+
+.cardSwiper {
+  .cardGroups {
+    position: relative;
+    width: 400px;
+    height: 500px;
+  }
+
+  .cardSwiperButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  $blue-color: #215ebb;
+  $hovered-blue-color: #415572;
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: $blue-color;
+    border: 1px solid $blue-color;
+
+    &:hover {
+      color: $hovered-blue-color;
+      border-color: $hovered-blue-color;
+      cursor: pointer;
+    }
+  }
+}
+
+.cardGroup {
+  position: relative;
+  width: 400px;
+  height: 500px;
+  z-index: 10;
+  display: none;
+
+  &:hover {
+    .first {
+      @include card-config('big', -70%, 7%, -5);
+      @include card-config('little', -150%, -60%, 4);
+    }
+
+    .second {
+      @include card-config('big', -15%, 10%, -1);
+      @include card-config('little', -200%, 300%, -2);
+    }
+
+    .third {
+      @include card-config('big', 30%, 10%, 1);
+      @include card-config('little', 350%, -50%, -1);
+    }
+
+    .fourth {
+      @include card-config('big', 87%, 7%, 1.5);
+      @include card-config('little', 400%, 260%, 1.5);
+    }
+  }
+
+  .card {
+    position: absolute;
+    aspect-ratio: 5 / 7;
+    transform: rotate(calc(var(--position) * 2deg * var(--rotationCoefficient))) translate(var(--translateX), var(--translateY));
+    transition: transform 700ms ease;
+    border-radius: 10px;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      width: 100%
+    }
+
+    &:hover {
+      z-index: 10;
+    }
+  }
+
+  .first {
+    @include card-config('big', 5%, 10%, -1);
+    @include card-config('little', 60%, 60%, 0);
+  }
+
+  .second {
+    @include card-config('big', 15%, 7%, 1);
+    @include card-config('little', 60%, 60%, 0);
+  }
+
+  .third {
+    @include card-config('big', 10%, 10%, 0);
+    @include card-config('little', 60%, 60%, 0);
+  }
+
+  .fourth {
+    @include card-config('big', 20%, 10%, 1);
+    @include card-config('little', 60%, 60%, 0);
+  }
+
+  .big {
+    width: 30vmin;
+    border-radius: 1vmin;
+    z-index: 1;
+  }
+
+  .little {
+    width: 12vmin;
+    border-radius: 2vmin;
+  }
+}
+
+@include appear-animation($from-left, -200%);
+@include appear-animation($from-right, 200%);
+
+.fromLeft {
+  @include appear-from($from-left);
+}
+
+.fromRight {
+  @include appear-from($from-right);
+}
+
+.toLeft {
+  @include move-to(-200%);
+}
+
+.toRight {
+  @include move-to(200%);
+}
