@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const portfinderSync = require("portfinder-sync");
 
 module.exports = (env) => {
   const {
@@ -12,6 +13,7 @@ module.exports = (env) => {
   } = env;
 
   console.log(base, index, template, title);
+  const freePort = portfinderSync.getPort(port);
 
   return {
     devtool: "source-map",
@@ -62,7 +64,7 @@ module.exports = (env) => {
     },
     devServer: {
       static: "./dist",
-      port,
+      port: freePort,
       historyApiFallback: true,
     },
   };
