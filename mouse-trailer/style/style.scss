@@ -48,11 +48,6 @@ body {
     transition: background-size 300ms ease, opacity 300ms ease;
     width: 40%;
 
-    &:hover ~ #trailer {
-      width: 10%;
-      height: 10%;
-    }
-
     &:hover {
       background-size: 102%;
       opacity: 1;
