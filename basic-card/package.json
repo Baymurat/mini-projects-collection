@@ -1,0 +1,12 @@
+{
+  "name": "basic-card",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ../webpack.config.js  --env base=basic-card --env title='BASIC-CARD'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
