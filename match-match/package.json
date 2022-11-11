@@ -1,0 +1,12 @@
+{
+  "name": "match-match",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ../webpack.config.js --env index='./src/index.tsx' --env base=match-match --env title='MATCH-MATCH'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
