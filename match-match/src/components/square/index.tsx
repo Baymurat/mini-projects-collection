@@ -1,24 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import cx from "classnames";
 import styles from "./styles.module.scss";
+import { Card } from "../../game/types";
 
-type Props = {
-  nothing?: string;
+type Props = Card & {
+  onCardClick: (id: string, targetId: string, isOpen: boolean) => void;
 }
 
-const Square = (props: Props) => {
-  const [isSelected, setIsSelected] = useState<boolean>(false);
-  const onClick = () => setIsSelected((prev) => !prev);
-
-  return (
-    <div
-      onClick={onClick}
-      className={cx(styles.container, { [styles.open]: isSelected })}
-    >
-      <div className={styles.first} />
-      <div className={styles.second} />
+const Square = ({
+  id,
+  isMatched,
+  isOpen,
+  targetId,
+  onCardClick,
+}: Props) => (
+  <div
+    onClick={() => {
+      if (isMatched) return;
+      onCardClick(id, targetId, !isOpen);
+    }}
+    className={cx(styles.container, {
+      [styles.open]: isMatched || isOpen,
+      [styles.matched]: isMatched,
+    })}
+  >
+    <div className={styles.backSide} />
+    <div className={styles.frontSide}>
+      {id}
     </div>
-  );
-};
+  </div>
+);
 
 export default Square;
