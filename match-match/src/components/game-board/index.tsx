@@ -1,9 +1,10 @@
 import React, { FC, useEffect } from "react";
-import Square from "../square";
 import styles from "./styles.module.scss";
 import Timer from "../timer";
 import { useGameConfig } from "../../game";
 import { useTimer } from "../../hooks/timer";
+import ScoreBoard from "../score-board";
+import Rows from "./Rows";
 
 const GameBoard: FC = () => {
   const {
@@ -31,19 +32,23 @@ const GameBoard: FC = () => {
 
   return (
     <div className={styles.container}>
+      <ScoreBoard
+        show={gameState.isOver}
+        onClose={() => {
+          restartGame();
+          restartTimer();
+        }}
+      />
       <Timer
         seconds={seconds}
         minutes={minutes}
       />
 
       <div className={styles.board}>
-        {(cards).map((card) => (
-          <Square
-            key={card.id}
-            onCardClick={onCardClick}
-            {...card}
-          />
-        ))}
+        <Rows
+          cards={cards}
+          onCardClick={onCardClick}
+        />
       </div>
       <div>
         <button

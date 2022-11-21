@@ -7,8 +7,13 @@
   gap: 20px;
 
   .board {
+    width: fit-content;
     display: flex;
-    width: 320px;
     flex-wrap: wrap;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
   }
 }

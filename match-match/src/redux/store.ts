@@ -4,6 +4,7 @@ import openCardReducer, { setOpenCard } from "./features/gameboard/openedCard";
 import boardStateReducer, { setBoardDisabled } from "./features/gameboard/boardState";
 import gameStateReducer, { setGameOver, setGameStarted } from "./features/gameboard/gameState";
 import unmatchedCardsReducer, { setUnmatchedCardsCount } from "./features/gameboard/unmatchedCards";
+import cardsConfigReducer from "./features/gameboard/cardsConfig";
 
 const listenerMiddleware = createListenerMiddleware();
 
@@ -57,6 +58,7 @@ export const store = configureStore({
     boardState: boardStateReducer,
     gameState: gameStateReducer,
     unmatchedCards: unmatchedCardsReducer,
+    cardsConfig: cardsConfigReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(listenerMiddleware.middleware),
 });

@@ -3,6 +3,7 @@ export type Card = {
   isMatched: boolean;
   isOpen: boolean;
   targetId: string;
+  iconName: string;
 }
 
 export type GameStateType = {

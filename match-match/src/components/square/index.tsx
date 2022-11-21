@@ -8,6 +8,7 @@ type Props = Card & {
 }
 
 const Square = ({
+  iconName,
   id,
   isMatched,
   isOpen,
@@ -26,7 +27,7 @@ const Square = ({
   >
     <div className={styles.backSide} />
     <div className={styles.frontSide}>
-      {id}
+      <ion-icon name={iconName} />
     </div>
   </div>
 );

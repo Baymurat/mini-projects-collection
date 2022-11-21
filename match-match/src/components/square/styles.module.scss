@@ -21,6 +21,17 @@
     backface-visibility: hidden;
   }
 
+  .frontSide {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    ion-icon {
+      width: 50%;
+      height: 50%;
+    }
+  }
+
   .backSide {
     background-color: red;
   }
