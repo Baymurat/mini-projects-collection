@@ -1,6 +1,6 @@
 .button {
   position: relative;
-  background: rgb(25, 197, 209);
+  background: #2dd92a;
   color: #fff;
   text-decoration: none;
   text-transform: uppercase;
@@ -14,17 +14,17 @@
   cursor: pointer;
   
   &:hover {
-    background: #1e9bff;
-    color: #1e9bff;
+    background: #2dd92a;
+    color: #2dd92a;
     letter-spacing: 0.25em;
-    box-shadow: 0 0 35px #1e9bff;
+    box-shadow: 0 0 35px #2dd92a;
   }
 
   &::before {
     content: '';
     position: absolute;
     inset: 2px;
-    background: #27282c;
+    background: #4e7be7;
     z-index: 0;
     border-radius: 5px;
   }

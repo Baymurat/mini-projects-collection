@@ -4,6 +4,7 @@ import { GameConfigType, Card } from "./types";
 import { initGameboard, openCard } from "../redux/features/gameboard/cards";
 import { setUnmatchedCardsCount } from "../redux/features/gameboard/unmatchedCards";
 import { setGameOver, setGameStarted } from "../redux/features/gameboard/gameState";
+import { setOpenCard } from "../redux/features/gameboard/openedCard";
 
 const gameConfig = (): GameConfigType => {
   const dispatch = useAppDispatch();
@@ -14,6 +15,7 @@ const gameConfig = (): GameConfigType => {
     dispatch(setUnmatchedCardsCount(cards.length / 2));
     dispatch(setGameOver(false));
     dispatch(setGameStarted(false));
+    dispatch(setOpenCard(-1));
   }, []);
 
   useEffect(initGame, []);
