@@ -9,7 +9,7 @@ const gameConfig = (): GameConfigType => {
   const dispatch = useAppDispatch();
   const { pairsCount } = useAppSelector((state) => state.cardsConfig);
   const initGame = useCallback(() => {
-    const cards = getRandomCards(pairsCount - 11);
+    const cards = getRandomCards(pairsCount);
     dispatch(initGameboard(cards));
     dispatch(setUnmatchedCardsCount(cards.length / 2));
     dispatch(setGameOver(false));

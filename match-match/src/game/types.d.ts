@@ -20,9 +20,9 @@ export type GameConfigType = {
 
 
 export type UseTimerType = {
-  seconds :number,
-  minutes :number,
-  startTimer :() => NodeJS.Timer,
-  stopTimer :() => void,
-  restartTimer :() => void
+  seconds: string,
+  minutes: string,
+  startTimer: () => NodeJS.Timer,
+  stopTimer: () => void,
+  restartTimer: () => void
 }

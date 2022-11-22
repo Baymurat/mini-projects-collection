@@ -5,6 +5,7 @@ import { useGameConfig } from "../../game";
 import { useTimer } from "../../hooks/timer";
 import ScoreBoard from "../score-board";
 import Rows from "./Rows";
+import StyledButton from "../styled-button";
 
 const GameBoard: FC = () => {
   const {
@@ -33,6 +34,7 @@ const GameBoard: FC = () => {
   return (
     <div className={styles.container}>
       <ScoreBoard
+        time={`${minutes}:${seconds}`}
         show={gameState.isOver}
         onClose={() => {
           restartGame();
@@ -51,16 +53,14 @@ const GameBoard: FC = () => {
         />
       </div>
       <div>
-        <button
+        <StyledButton
           onClick={() => {
             restartGame();
             stopTimer();
             restartTimer();
           }}
-          type="button"
-        >
-          Restart
-        </button>
+          text="Restart"
+        />
       </div>
     </div>
   );

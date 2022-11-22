@@ -17,8 +17,11 @@ export const useTimer = (): UseTimerType => {
   const stopTimer = () => clearInterval(intervalId);
   const restartTimer = () => setCounted(0);
 
-  const minutes = Math.floor(counted / 60);
-  const seconds = counted % 60;
+  const minutesNumber = Math.floor(counted / 60);
+  const secondsNumber = counted % 60;
+
+  const minutes = minutesNumber < 10 ? `0${minutesNumber}` : `${minutesNumber}`;
+  const seconds = secondsNumber < 10 ? `0${secondsNumber}` : `${secondsNumber}`;
 
   return {
     seconds, minutes, startTimer, stopTimer, restartTimer,
