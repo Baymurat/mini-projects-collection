@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  min-height: 100vh;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.text {
+  width: 95px;
+  height: 95px;
+  background: #2c0e58;
+  border-radius: 50px;
+  z-index: 1;
+  color: #fff;
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50px;
+  position: relative;
+}
+
+.loader::before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 100px;
+  background: linear-gradient(rgb(5, 255, 122), rgb(0, 217, 255));
+  animation: animate 1.3s infinite;
+}
+
+@keyframes animate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
