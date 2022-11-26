@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  min-height: 100vh;
+  background: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger {
+  background: #fff;
+  width: 250px;
+  height: 250px;
+  border: 10px solid;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger__line,
+.hamburger__line::before,
+.hamburger__line::after {
+  width: var(--width-percetage);
+  height: 20px;
+  background-color: black;
+  border-radius: 10px;
+  position: var(--position);
+  top: var(--top-offset);
+  transition: 
+  top 300ms ease-in 300ms, 
+  transform 300ms ease-in 0ms, 
+  background 0ms 300ms 
+;
+}
+
+.hamburger__line {
+  --width-percetage: 80%;
+  --position: relative;
+}
+
+.hamburger__line::before,
+.hamburger__line::after {
+  content: '';
+  --width-percetage: 100%;
+  --position: absolute;
+}
+
+.hamburger__line::before {
+  --top-offset: -45px;
+  --rotate-deg: 45deg;
+}
+
+.hamburger__line::after {
+  --top-offset: 45px;
+  --rotate-deg: -45deg;
+}
+
+.hamburger:hover .hamburger__line::before,
+.hamburger:hover .hamburger__line::after {
+  --top-offset: 0px;
+  transform: rotate(var(--rotate-deg));
+}
+
+.hamburger:hover .hamburger__line {
+  background: transparent;
+}
+
+.hamburger:hover .hamburger__line,
+.hamburger:hover .hamburger__line::before,
+.hamburger:hover .hamburger__line::after {
+  transition: 
+    top 300ms ease-in, 
+    transform 300ms ease-in 300ms, 
+    background 0ms 300ms 
+  ;
+}
