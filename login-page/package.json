@@ -1,0 +1,12 @@
+{
+  "name": "login-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ../webpack.config.js  --env base=login-page --env title='LOGIN-PAGE'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
