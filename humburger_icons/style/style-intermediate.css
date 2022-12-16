@@ -1,0 +1,62 @@
+.hamburger__intermediate {
+  background: #fff;
+  width: 250px;
+  height: 250px;
+  border: 10px solid;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intermediate__line {
+  position: relative;
+  width: 80%;
+}
+
+.intermediate__line::before,
+.intermediate__line::after {
+  content: '4';
+  --width-percetage: 100%;
+  position: absolute;
+  background-color: black;
+  width: var(--width-percetage);
+  height: 20px;
+  border-radius: 10px;
+  top: var(--top-offset);
+  left: 0;
+  transform-origin: 65px 45px;
+}
+
+
+.intermediate__line::before {
+  --top-offset: -35px;
+  --rotate-deg: 135deg;
+}
+
+.intermediate__line::after {
+  --top-offset: 25px;
+  --rotate-deg: 45deg;
+}
+
+/* .hamburger__intermediate:hover .intermediate__line::before,
+.hamburger__intermediate:hover .intermediate__line::after {
+  transition: 
+    width 400ms ease-in, 
+    left 400ms ease-in, 
+    top 400ms ease-in 400ms,
+    transform 400ms ease-in 800ms
+  ;
+  --width-percetage: 11%;
+  --top-offset: -70px;
+  transform: rotate(var(--rotate-deg));
+  animation: stretch 400ms 1200ms forwards
+}
+
+.hamburger__intermediate:hover .intermediate__line::before {
+  left: 89%;
+}
+
+@keyframes stretch {
+  100% { width: 100%; }
+} */

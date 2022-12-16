@@ -1,18 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.container {
-  min-height: 100vh;
-  background: gray;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hamburger {
+.hamburger__basic {
   background: #fff;
   width: 250px;
   height: 250px;
@@ -23,7 +9,7 @@
   justify-content: center;
 }
 
-.hamburger__line,
+.hamburger__line,нный, вокруг которого построена телекомпания и кормится репортёр с операт
 .hamburger__line::before,
 .hamburger__line::after {
   width: var(--width-percetage);
@@ -33,9 +19,9 @@
   position: var(--position);
   top: var(--top-offset);
   transition: 
-  top 300ms ease-in 300ms, 
-  transform 300ms ease-in 0ms, 
-  background 0ms 300ms 
+    top 300ms ease-in 300ms, 
+    transform 300ms ease-in 0ms, 
+    background 0ms 300ms 
 ;
 }
 
@@ -61,19 +47,19 @@
   --rotate-deg: -45deg;
 }
 
-.hamburger:hover .hamburger__line::before,
-.hamburger:hover .hamburger__line::after {
+.hamburger__basic:hover .hamburger__line::before,
+.hamburger__basic:hover .hamburger__line::after {
   --top-offset: 0px;
   transform: rotate(var(--rotate-deg));
 }
 
-.hamburger:hover .hamburger__line {
+.hamburger__basic:hover .hamburger__line {
   background: transparent;
 }
 
-.hamburger:hover .hamburger__line,
-.hamburger:hover .hamburger__line::before,
-.hamburger:hover .hamburger__line::after {
+.hamburger__basic:hover .hamburger__line,
+.hamburger__basic:hover .hamburger__line::before,
+.hamburger__basic:hover .hamburger__line::after {
   transition: 
     top 300ms ease-in, 
     transform 300ms ease-in 300ms, 
