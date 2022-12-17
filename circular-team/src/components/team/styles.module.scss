@@ -1,0 +1,74 @@
+.container {
+  width: 690px;
+  height: 690px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 4rem;
+  position: relative;
+
+  .wrapper {
+    position: absolute;
+    left: -8%;
+    filter: grayscale(1);
+    transform: rotate(calc(360deg/8 * var(--i)));
+    transform-origin: 400px;
+
+    img {
+      transform: rotate(calc(-360deg/8 * var(--i)));
+    }
+
+    &:nth-child(1n) { --i: 1; --border-color: red; }
+    &:nth-child(2n) { --i: 2; --border-color: orange; }
+    &:nth-child(3) { --i: 3; --border-color: yellow; }
+    &:nth-child(4) { --i: 4; --border-color: green; }
+    &:nth-child(5) { --i: 5; --border-color: white; }
+    &:nth-child(6) { --i: 6; --border-color: blue; }
+    &:nth-child(7) { --i: 7; --border-color: purple; }
+    &:nth-child(8) { --i: 8; --border-color: black; }
+
+    &:hover {
+      filter: grayscale(0);
+      cursor: pointer;
+    }
+
+    .teamMember {
+      border: 2px solid ;
+      border-radius: 50%;
+      padding: 5px;
+      transition: transform 300ms ease-out, border-color 300ms linear;
+      
+      &:hover {
+        transform: scale(1.1);
+        border-color: var(--border-color);
+      }
+    }    
+  }
+
+  .fadeOut {
+    position: absolute;
+    animation: fadeOutAnimation 800ms forwards;
+  }
+
+  .fadeIn {
+    animation: fadeInAnimation 800ms;
+  }
+}
+
+@keyframes fadeOutAnimation {
+  100% {
+    scale: 0;
+  }
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    scale: 0;
+  }
+  100% {
+    scale: 1;
+  }
+}

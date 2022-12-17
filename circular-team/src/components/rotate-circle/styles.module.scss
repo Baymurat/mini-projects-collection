@@ -1,0 +1,15 @@
+.container {
+  border-radius: 50%;
+  position: absolute;
+  border: 4px solid transparent;
+  border-left: 3px solid #fff;
+  border-right: 3px solid blue;
+  animation: rotate 4s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
