@@ -39,10 +39,7 @@ const gameConfig = (): GameConfigType => {
       },
     });
 
-    return () => {
-      subscription.unsubscribe();
-      console.log("UNSUB");
-    };
+    return () => subscription.unsubscribe();
   }, []);
 
   const cards = useAppSelector((state) => state.cards);
@@ -55,13 +52,13 @@ const gameConfig = (): GameConfigType => {
     restartTimer();
   };
 
-  const onCardClick = useCallback((id: string, targetId: string, isOpen: boolean) => {
+  const onCardClick = (id: string, targetId: string, isOpen: boolean) => {
     if (isDisabled) return;
 
     dispatch(openCard({
       id, targetId, isOpen,
     }));
-  }, []);
+  };
 
   return {
     cards,
@@ -105,18 +102,18 @@ const shuffle = (array: Card[]) => {
 const iconNames: string[] = [
   "alarm-outline",
   "basketball-outline",
-  // "bicycle-outline",
-  // "bus-outline",
-  // "dice-outline",
-  // "diamond-outline",
-  // "hammer-outline",
-  // "easel-outline",
-  // "fish-outline",
-  // "fitness-outline",
-  // "flame-outline",
-  // "leaf-outline",
-  // "megaphone-outline",
-  // "prism-outline",
+  "bicycle-outline",
+  "bus-outline",
+  "dice-outline",
+  "diamond-outline",
+  "hammer-outline",
+  "easel-outline",
+  "fish-outline",
+  "fitness-outline",
+  "flame-outline",
+  "leaf-outline",
+  "megaphone-outline",
+  "prism-outline",
 ];
 
 const getRandomCards = (count: number) => {

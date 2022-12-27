@@ -13,7 +13,11 @@ const listenerMiddleware = createListenerMiddleware();
 listenerMiddleware.startListening({
   actionCreator: openCard,
   effect: async (action, listenerApi) => {
-    const { payload } = action;
+    const {
+      payload: {
+        id, targetId, isOpen,
+      },
+    } = action;
     const {
       openCardId, gameState, unmatchedCards,
     } = listenerApi.getState() as RootState;
@@ -23,18 +27,18 @@ listenerMiddleware.startListening({
       startTimer();
     }
 
-    if (!payload.isOpen) {
+    if (!isOpen) {
       listenerApi.dispatch(setOpenCard(-1));
       return;
     }
 
     if (openCardId === -1) {
-      listenerApi.dispatch(setOpenCard(action.payload.id));
+      listenerApi.dispatch(setOpenCard(id));
       return;
     }
 
-    if (openCardId === action.payload.targetId) {
-      listenerApi.dispatch(markMatched([openCardId, action.payload.id]));
+    if (openCardId === targetId) {
+      listenerApi.dispatch(markMatched([openCardId, id]));
 
       if (unmatchedCards === 1) {
         listenerApi.dispatch(setGameOver(true));
