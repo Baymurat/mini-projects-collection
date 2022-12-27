@@ -23,6 +23,7 @@
     "react-router-dom": "^6.4.0",
     "react-scripts": "5.0.1",
     "react-social-icons": "^5.15.0",
+    "rxjs": "^7.8.0",
     "ts-node": "^10.9.1",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"

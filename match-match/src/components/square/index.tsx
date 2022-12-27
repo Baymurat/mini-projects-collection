@@ -32,4 +32,4 @@ const Square = ({
   </div>
 );
 
-export default Square;
+export default React.memo(Square);

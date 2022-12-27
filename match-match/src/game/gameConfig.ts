@@ -1,13 +1,26 @@
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { GameConfigType, Card } from "./types";
 import { initGameboard, openCard } from "../redux/features/gameboard/cards";
 import { setUnmatchedCardsCount } from "../redux/features/gameboard/unmatchedCards";
 import { setGameOver, setGameStarted } from "../redux/features/gameboard/gameState";
 import { setOpenCard } from "../redux/features/gameboard/openedCard";
+import { Timer } from "../utils/timer";
+
+const {
+  getCountedTime,
+  getFinishTime,
+  stopTimer,
+  restartTimer,
+} = Timer.getInstance();
+
+const countedTime$ = getCountedTime();
+const finishTime$ = getFinishTime();
 
 const gameConfig = (): GameConfigType => {
   const dispatch = useAppDispatch();
+  const [finishedTime, setFinishedTime] = useState<string>("");
+
   const { pairsCount } = useAppSelector((state) => state.cardsConfig);
   const initGame = useCallback(() => {
     const cards = getRandomCards(pairsCount);
@@ -18,7 +31,19 @@ const gameConfig = (): GameConfigType => {
     dispatch(setOpenCard(-1));
   }, []);
 
-  useEffect(initGame, []);
+  useEffect(() => {
+    initGame();
+    const subscription = finishTime$.subscribe({
+      next: ({ seconds, minutes }) => {
+        setFinishedTime(`${minutes}:${seconds}`);
+      },
+    });
+
+    return () => {
+      subscription.unsubscribe();
+      console.log("UNSUB");
+    };
+  }, []);
 
   const cards = useAppSelector((state) => state.cards);
   const isDisabled = useAppSelector((state) => state.boardState);
@@ -26,18 +51,25 @@ const gameConfig = (): GameConfigType => {
 
   const restartGame = () => {
     initGame();
+    stopTimer();
+    restartTimer();
   };
 
-  const onCardClick = (id: string, targetId: string, isOpen: boolean) => {
+  const onCardClick = useCallback((id: string, targetId: string, isOpen: boolean) => {
     if (isDisabled) return;
 
     dispatch(openCard({
       id, targetId, isOpen,
     }));
-  };
+  }, []);
 
   return {
-    cards, gameState, restartGame, onCardClick,
+    cards,
+    gameState,
+    finishedTime,
+    restartGame,
+    onCardClick,
+    countedTime$,
   };
 };
 
@@ -73,18 +105,18 @@ const shuffle = (array: Card[]) => {
 const iconNames: string[] = [
   "alarm-outline",
   "basketball-outline",
-  "bicycle-outline",
-  "bus-outline",
-  "dice-outline",
-  "diamond-outline",
-  "hammer-outline",
-  "easel-outline",
-  "fish-outline",
-  "fitness-outline",
-  "flame-outline",
-  "leaf-outline",
-  "megaphone-outline",
-  "prism-outline",
+  // "bicycle-outline",
+  // "bus-outline",
+  // "dice-outline",
+  // "diamond-outline",
+  // "hammer-outline",
+  // "easel-outline",
+  // "fish-outline",
+  // "fitness-outline",
+  // "flame-outline",
+  // "leaf-outline",
+  // "megaphone-outline",
+  // "prism-outline",
 ];
 
 const getRandomCards = (count: number) => {

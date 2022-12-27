@@ -5,7 +5,9 @@ import boardStateReducer, { setBoardDisabled } from "./features/gameboard/boardS
 import gameStateReducer, { setGameOver, setGameStarted } from "./features/gameboard/gameState";
 import unmatchedCardsReducer, { setUnmatchedCardsCount } from "./features/gameboard/unmatchedCards";
 import cardsConfigReducer from "./features/gameboard/cardsConfig";
+import { Timer } from "../utils/timer";
 
+const { startTimer, stopTimer } = Timer.getInstance();
 const listenerMiddleware = createListenerMiddleware();
 
 listenerMiddleware.startListening({
@@ -18,6 +20,7 @@ listenerMiddleware.startListening({
 
     if (!gameState.isStarted) {
       listenerApi.dispatch(setGameStarted(true));
+      startTimer();
     }
 
     if (!payload.isOpen) {
@@ -36,6 +39,7 @@ listenerMiddleware.startListening({
       if (unmatchedCards === 1) {
         listenerApi.dispatch(setGameOver(true));
         listenerApi.dispatch(setGameStarted(false));
+        stopTimer();
       } else {
         listenerApi.dispatch(setUnmatchedCardsCount(unmatchedCards - 1));
       }
